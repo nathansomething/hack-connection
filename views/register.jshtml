@@ -22,47 +22,46 @@
 </head>
 <body>
     <h1 class="text-center">Hack Connections</h1>
-    <div class="container form">
-        <h2>Basic Info</h2>
-        <form>
+    <form method="post" action="/">
+        <div class="container form">
+            <h2>Basic Info</h2>
             <fieldset class="form-group">
                 <label for="InputName">First Name</label>
-                <input type="name" class="form-control" id="InputName" placeholder="First Name">
+                <input type="name" name="user[firstname]" class="form-control" id="InputName" placeholder="First Name">
             </fieldset>
             <fieldset class="form-group">
                 <label for="InputName">Last Name</label>
-                <input type="name" class="form-control" id="InputName" placeholder="Last Name">
+                <input type="name" name="user[lastname]" class="form-control" id="InputName" placeholder="Last Name">
             </fieldset>
             <fieldset class="form-group">
                 <label for="InputEmail">Email</label>
-                <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                <input type="email" name="user[email]" class="form-control" id="InputEmail" placeholder="Email">
             </fieldset>
             <fieldset class="form-group">
                 <label for="InputPhoneNumber">Phone Number</label>
-                <input type="text" class="form-control bfh-phone" data-country="US" id="InputPhoneNumber" placeholder="Phone Number">
+                <input type="text" name="user[phonenumber]" class="form-control bfh-phone" data-country="US" id="InputPhoneNumber" placeholder="Phone Number">
             </fieldset>
-        </form>
-    </div>
-    <div class="container form">
-        <h2>Tell us about yourself</h2>
-        <textarea class="form-control" rows="3"></textarea>
-    </div>
-    <div class="container form">
-        <h2>Describe your technical background</h2>
-        <textarea class="form-control" rows="3"></textarea>
-    </div>
-    <div class="container form">
-        <h2>What are you hoping to work on?</h2>
-        <textarea class="form-control" rows="3"></textarea>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-offset-3">
-                <button id="submit" type="submit" class="btn btn-primary text-center" style="width: 500px; height: 150px;">Submit</button>
+        </div>
+        <div class="container form">
+            <h2>Tell us about yourself</h2>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="container form">
+            <h2>Describe your technical background</h2>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <div class="container form">
+            <h2>What are you hoping to work on?</h2>
+            <textarea class="form-control" rows="3"></textarea>
+        </div>
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3">
+                    <button id="submit" type="submit" class="btn btn-primary text-center" style="width: 500px; height: 150px;">Submit</button>
+                </div>
             </div>
         </div>
-        
-    </div>
+    </form>
 </body>
 </html>

@@ -28,6 +28,21 @@ app.get('/register', function (request, result) {
 	result.render('register');
 });
 
+app.post('/', function (request, result) {
+	console.log(request.body.user.firstname);
+	console.log(request.body.user.lastname);
+	console.log(request.body.user.email);
+	console.log(request.body.user.phonenumber);
+	result.locals({
+		title : 'Hack Connections'
+	});
+	result.render('index');
+});
+
+// app.get('/done', function(request, result) {
+// 	result.render('index');
+// });
+
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port ' + app.get('port') + '!');
 });
