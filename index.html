@@ -1,8 +1,109 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+<script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+<script src="scripts/bootstrap-formhelpers-phone.en_US.js"></script>
+<script src="scripts/bootstrap-formhelpers-phone.js"></script>
+
+<link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+  
+  <!-- Universal selector:  means all character data will take on the Raleway font-family look -->
+  <style>
+    * { font-family: Raleway; }
+  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<script src="index.js"></script>
+	<h1>Welcome to the Hackathon!</h1>
+	<h3>Sign up with your contact info below, and choose some of your interests to get suggestions for team</h3>
+
+	<div class="container">
+
+	<form>
+		<fieldset class="form-group">
+    	<label for="InputName"> Name</label>
+    	<input type="name" class="form-control" id="InputName" placeholder="Preferred First Name &amp; Last Name">
+  		</fieldset>
+  		<fieldset class="form-group">
+    	<label for="InputEmail"> Email</label>
+    	<input type="email" class="form-control" id="InputEmail" placeholder="Email">
+  		</fieldset>
+  		<fieldset class="form-group">
+  		<label for="InputPhoneNumber"> Phone Number</label>
+  		<input type="text" class="form-control bfh-phone" data-country="US" id="InputPhoneNumber">
+  		</fieldset>
+  	</form>
+  	</div>
+
+  	<div class="container" id="InterestBox">
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:gray">
+  			<p class="text-center"> Interests</p>
+  			</div>
+  		</div>
+  		<div class="rows">
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:pink">
+  				<label class="checkbox-inline"><input type="checkbox" value="">Front-End Development</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Back-End Development</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Machine Learning</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:pink">
+  				<label class="checkbox-inline"><input type="checkbox" value="">Design</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Mobile Apps</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Games</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:pink">
+  				<label class="checkbox-inline" class="text-center"><input type="checkbox" value="">Hardware</label>
+				<label class="checkbox-inline" class="text-center"><input type="checkbox" value="">Analytics</label>
+			</div>
+		</div>
+		</div>
+  	</div>
+ 	
+ 	<div class="container" id="LanguagesBox">
+ 		<div class="row">
+  			<div class="col-md-5" style="background-color:gray">
+  			<p class="text-center"> Languages</p>
+  			</div>
+  		</div>
+  		<div class="rows">
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:pink">
+  				<label class="checkbox-inline"><input type="checkbox" value="">Python</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">Java</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">JavaScript</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:pink">
+  				<label class="checkbox-inline"><input type="checkbox" value="">HTML/CSS</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">C</label>
+				<label class="checkbox-inline"><input type="checkbox" value="">C++</label>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<div class="col-md-5" style="background-color:pink">
+  				<label class="checkbox-inline" class="text-center"><input type="checkbox" value="">C#</label>
+			</div>
+		</div>
+		</div>
+		<textarea class="form-control" rows="3"></textarea>
+ 	</div>
+ 	
 </body>
 </html>
