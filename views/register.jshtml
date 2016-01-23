@@ -44,15 +44,15 @@
         </div>
         <div class="container form">
             <h2>Tell us about yourself</h2>
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" name="user[bio]" rows="3"></textarea>
         </div>
         <div class="container form">
             <h2>Describe your technical background</h2>
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" name="user[tech_background]" rows="3"></textarea>
         </div>
         <div class="container form">
             <h2>What are you hoping to work on?</h2>
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea class="form-control" name='user[project]' rows="3"></textarea>
         </div>
         <br>
         <div class="container">
