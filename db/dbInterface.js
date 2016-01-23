@@ -17,7 +17,7 @@ exports.getPersonAttribute = function(connection, fullname, attribute) {
     console.log("Query: " + result);
     toReturn = result;
   });
-  
+
   return toReturn;
 }
 
@@ -29,13 +29,23 @@ exports.getAttributeValues = function(connection, attribute) {
   sb.append(' FROM people;');
 
   var toReturn = undefined;
-  
+
   sb.build(function(err, result) {
     console.log("Query: " + result);
     toReturn = result;
   });
-  
+
   return toReturn;
+}
+
+// Adds a new person with the given attributes to the database
+exports.addPerson = function(fullname, email, phone, idea, interests, languages) {
+  // TODO
+}
+
+// Adds a connection between the 2 given people
+exports.addConnection = function(person1, person2) {
+  // TODO
 }
 
 exports.defaultConnection = function() {
@@ -46,3 +56,4 @@ exports.defaultConnection = function() {
     database: 'HackATeam'
   });
 }
+
