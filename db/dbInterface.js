@@ -7,19 +7,18 @@ exports.getPersonAttribute = function(connection, fullname, attribute) {
 
   sb.append('SELECT ');
   sb.append(attribute);
-  sb.append(' FROM people where fullname = \'');
+  sb.append(' FROM people WHERE fullname = \'');
   sb.append(fullname);
   sb.append('\';');
 
-  sb.build(function(err, result) {
-    console.log("Result: " + result);
-  };
+  var toReturn = undefined;
 
-  console.log("Query: " + sb.build());
+  sb.build(function(err, result) {
+    console.log("Query: " + result);
+    toReturn = result;
+  });
   
-  var result = connection.query(sb.toString());
-  
-  return result;
+  return toReturn;
 }
 
 exports.getAttributeValues = function(connection, attribute) {
@@ -28,10 +27,15 @@ exports.getAttributeValues = function(connection, attribute) {
   sb.append('SELECT ');
   sb.append(attribute);
   sb.append(' FROM people;');
+
+  var toReturn = undefined;
   
-  var result = connection.query(sb.toString());
+  sb.build(function(err, result) {
+    console.log("Query: " + result);
+    toReturn = result;
+  });
   
-  return result;
+  return toReturn;
 }
 
 exports.defaultConnection = function() {
