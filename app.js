@@ -1,6 +1,8 @@
 
 var express = require('express');
+var path = require('path');
 var app = express();
+
 app.set('port', process.env.PORT || 3000);
 app.engine('jshtml', require('jshtml-express'));
 app.configure(function() {
@@ -10,13 +12,20 @@ app.configure(function() {
 
 app.engine('jshtml', require('jshtml-express'));
 app.set('view engine', 'jshtml');
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-	res.locals({
-		title : 'Test!'
-		, message : 'De groeten'
+app.get('/', function (request, result) {
+	result.locals({
+		title : 'Hack Connections'
 	});
-	res.render('index');
+	result.render('index');
+});
+
+app.get('/register', function (request, result) {
+	result.locals({
+		title : 'Register'
+	});
+	result.render('register');
 });
 
 app.listen(app.get('port'), function () {
