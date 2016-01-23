@@ -26,3 +26,10 @@ create table People (
     Cpp BOOL,
     Csharp BOOL     
 );
+/*
+INSERT INTO People
+(fullname, email, phone, idea, frontend, backend, machineLearn, design, mobileApps, games, hardware, analytics, python, java, javascript, HTML_CSS, C, Cpp, Csharp)
+VALUES
+("Firstname Lastname", "myname@me.net", 7654321, "I want to make this awesome project", True, True, True, True, True, True, True, True, True, True, True, True, True, True, True);
+
+*/
