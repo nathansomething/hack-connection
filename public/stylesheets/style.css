@@ -4,11 +4,25 @@ body {
   background-color: #31486A
 }
 
-.container .col-md-4 {
+.form {
 	background-color: #FFFFFF;
-	height: 100px;
 	border-radius: 25px;
 	border: 1px solid #000000;
+	margin-top: 10px;
+	padding: 20px;
+}
+
+.button {
+	background-color: #FFFFFF;
+	border-radius: 25px;
+	border: 1px solid #000000;
+	margin-top: 10px;
+	padding: 20px;
+	height: 150px;
+}
+
+.form:hover {
+	background-color: #B2BDCF;
 }
 
 h1 {
