@@ -1,9 +1,12 @@
 
+"use strict";
+
 var express = require('express');
 var path = require('path');
 var Api = require("rosette-api").Api;
 var ArgumentParser = require("argparse").ArgumentParser;
 var DocumentParameters = require("rosette-api").DocumentParameters;
+var rosetteConstants = require("rosette-api").rosetteConstants;
 var app = express();
 
 var parser = new ArgumentParser({
@@ -45,44 +48,21 @@ app.post('/', function (request, result) {
 	console.log('last name: ' + request.body.user.lastname);
 	console.log('email: ' + request.body.user.email);
 	console.log('phone number: ' + request.body.user.phonenumber);
-	"use strict";
 
-	basis_api.tokens(request.body.user.bio, function(error, result) {
-	  if (error) {
-	    throw error;
-	  }
-	  else {
-	     console.log(result);
-	  }
+	var all_text = request.body.user.bio + request.body.user.tech_background + request.body.user.project;
+	//var morpho_data = {};
+
+	basis_api.morphology(all_text, rosetteConstants.morpholoyOutput.PARTS_OF_SPEECH, function(error, res) {
+		if (error) {
+			throw error;
+		}
+		else {
+			console.log(res);
+		}
 	});
 
-	basis_api.tokens(request.body.user.tech_background, function(error, result) {
-	  if (error) {
-	    throw error;
-	  }
-	  else {
-	     console.log(result);
-	  }
-	});
-
-	basis_api.tokens(request.body.user.project, function(error, result) {
-	  if (error) {
-	    throw error;
-	  }
-	  else {
-	     console.log(result);
-	  }
-	});
-
-	result.locals({
-		title : 'Browsing'
-	});
-	result.render('browsing');
+	result.redirect('/');
 });
-
-// app.get('/done', function(request, result) {
-// 	result.render('index');
-// });
 
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port ' + app.get('port') + '!');
