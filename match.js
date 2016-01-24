@@ -11,7 +11,7 @@ function match(personA, personB){
 			}
 		}
 	}
-	
+
 	competitive_a = dbInterface.getPersonAttribute(connection, personA, 'competitiveness');
 	competitive_b = dbInterface.getPersonAttribute(connection, personB, 'competitiveness');
 	competitive_diff = Math.abs(competitive_a - competitive_b);
