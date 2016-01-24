@@ -21,7 +21,7 @@ exports.getPersonAttribute = function(connection, fullname, attribute) {
   return toReturn;
 }
 
-exports.getAttributeValues = function(connection, attribute) {
+exports.getAttributeValues = function(dbConnection, attribute) {
   var sb = new StringBuilder();
 
   sb.append('SELECT ');
@@ -32,28 +32,79 @@ exports.getAttributeValues = function(connection, attribute) {
 
   sb.build(function(err, result) {
     console.log("Query: " + result);
-    toReturn = result;
+    toReturn = dbConnection.query(result);
   });
 
   return toReturn;
 }
 
 // Adds a new person with the given attributes to the database
-exports.addPerson = function(fullname, email, phone, idea, interests, languages) {
-  // TODO
+exports.addPerson = function(dbConnection, fullname, email, phone, idea, interests, languages) {
+  var insert = new StringBuilder();
+  var values = new StringBuilder();
+
+  insert.append('INSERT INTO people \( \`fullname\`, \`email\`, \`phone\`, \`idea\`');
+      values.append('VALUES (');
+      values.append(fullname);
+      values.append(', ');
+      values.append(email);
+      values.append(', ');
+      values.append(phone);
+      values.append(', ');
+      values.append(idea);
+
+      for (var i in interests) {
+        console.log("i: " + i);
+        if (i != undefined) {
+          appendTo(insert, values, i);
+        }
+      }
+
+      for (var i in languages) {
+        console.log("i: " + i);
+        if (i != undefined) {
+          appendTo(insert, values, i);
+        }
+      }
+
+      insert.append(')');
+      values.append(');');
+
+      values.build(function(err, result) {
+        console.log("Values: ", result);
+        insert.append(result);
+      });
+
+      var toReturn = undefined;
+
+      insert.build(function(err, result) {
+        console.log("Query: " + result);
+        toReturn = dbConnection.query(result);
+      });
+
+return toReturn;
 }
 
-// Adds a connection between the 2 given people
-exports.addConnection = function(person1, person2) {
-  // TODO
+function appendTo(insert, values, i) {
+  insert.append(', `');
+  insert.append(i);
+  insert.append('`');
+  values.append(', ');
+  values.append(i);
+}
+
+// Adds a match between the 2 given people
+exports.addMatch = function(name, matchName, matchRank) {
+  var sb = new StringBuilder();
 }
 
 exports.defaultConnection = function() {
   return mysql.createConnection({
     host: 'localhost',
-    user: 'hack',
-    password: fs.readFileSync('./pw.txt').toString().trim(),
-    database: 'HackATeam'
+         user: 'hack',
+         protocol: 'TCP',
+         password: fs.readFileSync('./db/pw.txt').toString().trim(),
+         database: 'HackATeam'
   });
 }
 
