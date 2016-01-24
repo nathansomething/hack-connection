@@ -13,14 +13,15 @@ function match(personA, personB){
 		}
 	}
 	
-	serious_a = words_a = dbInterface.getPersonAttribute(connection, personA, 'seriousness')
-	serious_b = dbInterface.getPersonAttribute(connection, personB, 'seriousness')
-	serious_compatibility = Math.abs(serious_a - serious_b);
-	/*if((word_matches >= 5) && (serious_compatibility < .60){
-		is_match = true;
-		match_rank = word_matches - (serious_compatibility/2);
-	}*/
-	match_rank = word_matches - (serious_compatibility*2)
+	competitive_a = dbInterface.getPersonAttribute(connection, personA, 'competitiveness')
+	competitive_b = dbInterface.getPersonAttribute(connection, personB, 'competitiveness')
+	competitive_diff = Math.abs(competitive_a - competitive_b);
+	
+	if(competitive_diff > .65){
+		match_rank = word_matches/(2*competitive_diff);
+	} else {
+		match_rank = word_matches/(compettitive_diff)
+	}
 	
 	return match_rank
 	}

@@ -8,7 +8,7 @@ create table People (
     techBackground TEXT,
     bio TEXT,
     words TEXT,
-    seriousness int
+    competitiveness int
 );
 
 create table Matches(
@@ -21,7 +21,7 @@ create table Matches(
     ON DELETE CASCADE,
     rank int
     
-    ON DELETE CASCADE
+    --ON DELETE CASCADE
 );
 /*
 INSERT INTO People
