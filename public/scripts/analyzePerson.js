@@ -1,4 +1,4 @@
-function analyze(var firstname, var lastname, var email, var phone, var interests, var techBackground, var bio, var words){
+function analyze(var firstname, var lastname, var email, var phone, var interests, var techBackground, var bio, var words, var competitiveness){
 	var fullname = concat(firstname, lastname);
 	
 	//analyze words
@@ -13,7 +13,7 @@ function analyze(var firstname, var lastname, var email, var phone, var interest
 		}
 	};
 	
-	var person = {name: fullname, email: email, phone: phone, interests:interests, techBackground:techBackground, bio:bio, words: words}
+	var person = {name: fullname, email: email, phone: phone, interests:interests, techBackground:techBackground, bio:bio, words: words, competitiveness: parseInt(competitiveness)}
 	enterPerson(person);
 	matches = [];
 
