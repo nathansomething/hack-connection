@@ -1,6 +1,6 @@
 use HackATeam;
 create table People (
-	ID int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+	--ID int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	fullname varchar(50),
     email varchar(50),
     phone INT(50),
