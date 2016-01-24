@@ -85,8 +85,8 @@ app.post('/', function (request, result) {
 	var morpho_data = {};
 
   dbInterface.addPerson(pool, first_name + ' ' + last_name, email, phone, all_text, function(err, rows) {
-    console.log(rows);
-  };
+    console.log(rows)
+  });
 
 
 	console.log(all_text);
