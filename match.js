@@ -1,7 +1,6 @@
 function match(personA, personB){
 	is_match = false;
-	//match_rank = 0;
-	 word_matches = 0;
+	word_matches = 0;
 	words_a = dbInterface.getPersonAttribute(connection, personA, 'words')
 	words_b = dbInterface.getPersonAttribute(connection, personB, 'words')
 
@@ -13,16 +12,16 @@ function match(personA, personB){
 		}
 	}
 	
-	competitive_a = dbInterface.getPersonAttribute(connection, personA, 'competitiveness')
-	competitive_b = dbInterface.getPersonAttribute(connection, personB, 'competitiveness')
+	competitive_a = dbInterface.getPersonAttribute(connection, personA, 'competitiveness');
+	competitive_b = dbInterface.getPersonAttribute(connection, personB, 'competitiveness');
 	competitive_diff = Math.abs(competitive_a - competitive_b);
 	
 	if(competitive_diff > .65){
 		match_rank = word_matches/(2*competitive_diff);
 	} else {
-		match_rank = word_matches/(compettitive_diff)
+		match_rank = word_matches/(compettitive_diff);
 	}
 	
-	return match_rank
+	return match_rank;
 	}
 };
