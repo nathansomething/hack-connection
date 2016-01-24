@@ -19,27 +19,23 @@
 
 <link rel="stylesheet" href="stylesheets/style.css">
 
-<h1 class="text-center"> People </h1>
+<h1 class="text-center"> Login </h1>
 
 <body>
   <link rel='stylesheet' href='stylesheets/style.css'>
-  <div class="container">
-  {{#grouped_each 6 people}}
-      {{#each this}}
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3 match">
-          <h2>{{name}}</h2>
-          <p style="font-size: 14px">{{email}}</p>
-          <p style="font-size: 14px">{{phone}}</p>
-          <div id="pars-{{@index}}" class="collapse">
-            <p>{{bio}}</p>
-            <p>{{tech_background}}</p>
-            <p>{{goals}}</p>
-          </div>
-          <p class="btn revealer" data-num="{{@index}}">Expand</p>
-        </div>
-      </div>
-     {{/each}}
-  {{/grouped_each}}
+  <form method="post" action="/login">
+    <div class="container form">
+        <fieldset class="form-group">
+            <label for="InputName">Email</label>
+            <input type="name" name="user[email]" class="form-control" id="InputName" placeholder="First Name">
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="InputName">Password</label>
+            <input type="password" name="user[password]" class="form-control" id="InputName" placeholder="Last Name">
+        </fieldset>
+        <button>Login</button>
+        <button>Cancel</button>
+    </div>
+  </form>
 </div>
 <body/>

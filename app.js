@@ -9,12 +9,12 @@ var rosetteConstants = require("rosette-api").rosetteConstants;
 var app = express();
 var exphandle = require('express-handlebars');
 
-var person1 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324"};
-var person2 =  {name:"Angela", email:"angela@hotmail.com", phone:"1245324"};
-var person3 = {name:"Nathan", email:"nate@hotmail.com", phone:"1234534"};
-var person4 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324"};
-var person5 = {name:"Emily", email:"hi@hotmail.com", phone:"45324"};
-var person6 = {name:"Emily", email:"hi@hotmail.com", phone:"12324"};
+var person1 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324", bio: "I like pie. I'm a political science major at Northeastern with an interest in coding. I'm generally a pretty easy going person, just don't piss me off.", tech_background: "I write code", goals: "I want to win"};
+var person2 =  {name:"Angela", email:"angela@hotmail.com", phone:"1245324", bio: "I like apples", tech_background: "I write code", goals: "I want to win"};
+var person3 = {name:"Nathan", email:"nate@hotmail.com", phone:"1234534", bio: "I like grapes", tech_background: "I write code", goals: "I want to loose"};
+var person4 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324", bio: "I like peanuts", tech_background: "I write code", goals: "I want to win"};
+var person5 = {name:"Emily", email:"hi@hotmail.com", phone:"45324", bio: "I like trees", tech_background: "I write code", goals: "I want to win"};
+var person6 = {name:"Emily", email:"hi@hotmail.com", phone:"12324", bio: "I like the sky", tech_background: "I write code", goals: "I want to loose"};
 
 var people = [person1, person2, person3, person4, person5, person6];
 
@@ -105,11 +105,31 @@ app.post('/', function (request, result) {
 	result.redirect('/');
 });
 
-app.get('/browsing', function (request, result) {
+var email = "";
+
+app.get('/login', function (request, result) {
 	result.locals({
-		title : 'Browsing'
+		title : 'Login'
 	});
-	result.render('browsing', {people: people});
+	result.render('login', {people: people});
+});
+
+app.post('/login', function (request, result) {
+	email = request.body.user.email;
+	console.log(email);
+	result.redirect('/browsing');
+});
+
+app.get('/browsing', function (request, result) {
+	if (email == "") {
+		result.redirect('/login');
+	}
+	else {
+		result.locals({
+			title : 'Browsing'
+		});
+		result.render('browsing', {people: people});
+	}
 });
 
 app.listen(app.get('port'), function () {
