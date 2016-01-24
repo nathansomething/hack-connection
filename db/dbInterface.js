@@ -35,7 +35,7 @@ exports.getAttributeValues = function(dbConnection, attribute, callback) {
 }
 
 // Adds a new person with the given attributes to the database
-exports.addPerson = function(dbConnection, fullname, email, phone, idea, interests, languages, callback) {
+exports.addPerson = function(dbPool, fullname, email, phone, idea, callback) {
   var insert = new StringBuilder();
   var values = new StringBuilder();
 
@@ -48,16 +48,6 @@ exports.addPerson = function(dbConnection, fullname, email, phone, idea, interes
       values.append(phone);
       values.append(', ');
       values.append(idea);
-
-      for (var i in interests) {
-        // console.log(i + ": " + interests[i]);
-        appendTo(insert, values, interests[i]);
-      }
-
-      for (var l in languages) {
-        // console.log(i + ": " + languages[l]);
-        appendTo(insert, values, languages[l]);
-      }
 
       insert.append(')');
       values.append(');');
@@ -77,7 +67,7 @@ exports.addPerson = function(dbConnection, fullname, email, phone, idea, interes
 
       var result = insert_s + values_s;
 
-      return dbConnection.query(result, callback);
+      return dbPool.query(result, callback);
 }
 
 function appendTo(insert, values, item) {
@@ -90,6 +80,7 @@ function appendTo(insert, values, item) {
 
 exports.getPerson = function(dbPool, email, callback) {
   return exports.getPersonAttribute(dbPool, email, 'email', function(err, rows) {
+    console.error(err);
     return {
     'email': email,
       'fullname': rows.fullname,
@@ -99,19 +90,20 @@ exports.getPerson = function(dbPool, email, callback) {
 }
 
 exports.getAllPeople = function (dbPool, callback) {
-return exports.getAttributeValues(dbPool, 'email', function(err, rows) {
+  return exports.getAttributeValues(dbPool, 'email', function(err, rows) {
     console.log("\nEMAILS");
     console.error(err);
     console.log(rows);
-    
-    return rows.map(function(currentValue, index, array) {
+
+    callback(null, rows.map(function(currentValue, index, array) {
       console.log(currentValue.email);
       var result = exports.getPerson(dbPool, currentValue.email, function(err, result) {
         console.log(result);
         return result;
       });
-    });
+    }));
   });
+
 }
 
 // Adds a match between the 2 given people
