@@ -88,12 +88,17 @@ function appendTo(insert, values, item) {
   values.append(item);
 }
 
-exports.getPerson = function(dbConnection, email) {
-  return {
-    'fullname': getPersonAttribute(dbConnection, email, 'fullname'),
-    'email': email,
-    'phone': getPersonAttribute(dbConnection, email, 'phone')
-  };
+exports.getPerson = function(dbConnection, email, callback) {
+  var person = {'email': email};
+
+  person['fullname'] = getPersonAttribute(dbConnection, email, 'fullname', function() {
+      person['phone'] = getPersonAttribute(dbConnection, email, 'phone', callback);
+    });
+  return person;
+}
+
+exports.getAllPeople = function (dbConnection) {
+  return getPerson(dbConnection, '*');
 }
 
 // Adds a match between the 2 given people
@@ -114,8 +119,8 @@ exports.addMatch = function(dbPool, name, matchName, matchRank, callback) {
     if (err) throw err;
     // console.log("Query: " + result);
     console.log(dbConnection.threadId);
-    dbPool.query(result, callback));
-  }
+    dbPool.query(result, callback);
+  });
 }
 
 exports.getMatches = function(dbPool, name, callback) {

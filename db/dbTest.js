@@ -27,3 +27,4 @@ var deere = dbInterface.addPerson(dbPool, 'John Deere', 'weed@wha.ck', 760555555
   console.log(rows);
 });
 
+var people = dbInterface.getAllPeople(dbPool);
