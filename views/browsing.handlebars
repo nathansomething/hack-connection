@@ -41,15 +41,15 @@
       {{#each this}}
       <div class="row">
         <div class="col-md-6 col-md-offset-3 match">
-          <h2>{{name}}</h2>
-          <p style="font-size: 14px">{{email}}</p>
-          <p style="font-size: 14px">{{phone}}</p>
+          <h2 class="text-center">{{name}}</h2>
+          <p class="matchcontact text-center">{{email}}</p>
+          <p class="matchcontact text-center">{{phone}}</p>
           <div id="pars-{{@index}}" class="collapse">
-            <p>{{bio}}</p>
-            <p>{{tech_background}}</p>
-            <p>{{goals}}</p>
+            <p class="matchinfo">{{bio}}</p>
+            <p class="matchinfo">{{tech_background}}</p>
+            <p class="matchinfo">{{goals}}</p>
           </div>
-          <p class="btn revealer" data-num="{{@index}}">Expand</p>
+          <p class="btn revealer text-center" data-num="{{@index}}">Details</p>
         </div>
       </div>
      {{/each}}

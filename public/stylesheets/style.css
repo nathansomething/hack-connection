@@ -22,12 +22,25 @@ body {
 	height: 150px;
 	color:#9CA653;
 }
+.matchcontact {
+	font-size:16px;
+}
 
 .match {
+	font-family:'Josefin Sans';
 	width: 200px;
-	background-color: #FFFFFF;
-	color: #000000;
+	background-color: #255865;
+	color: #C8D662;
 	margin:5px;
+	border-radius:5px;
+	font-size:50px;
+}
+
+.revealer {
+	text-align:center;
+}
+.revealer.btn:hover {
+	color:#EAEAEA;
 }
 
 h1 {
