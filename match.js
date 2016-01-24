@@ -1,16 +1,27 @@
 function match(personA, personB){
 	is_match = false;
-	interest_matches = 0;
-	for(i=0; i<personA.interests.length; i++){
-		for(j=0; j<personB.interests.length; j++){
-			if(personA.interest[i] == personB.interest[j]){
-				interest_matches += 1;
+	//match_rank = 0;
+	 word_matches = 0;
+	words_a = dbInterface.getPersonAttribute(connection, personA, 'words')
+	words_b = dbInterface.getPersonAttribute(connection, personB, 'words')
+
+	for(i = 0; i < words_a.length; i++){
+		for(j = 0; j < words_b.length; j++){
+			if(personA.words[i] == personB.words[j]){
+				word_matches += 1;
 			}
 		}
 	}
-	if(interest_matches >= 2){
-		return true;
-	} else {
-		return false;
+	
+	serious_a = words_a = dbInterface.getPersonAttribute(connection, personA, 'seriousness')
+	serious_b = dbInterface.getPersonAttribute(connection, personB, 'seriousness')
+	serious_compatibility = Math.abs(serious_a - serious_b);
+	/*if((word_matches >= 5) && (serious_compatibility < .60){
+		is_match = true;
+		match_rank = word_matches - (serious_compatibility/2);
+	}*/
+	match_rank = word_matches - (serious_compatibility*2)
+	
+	return match_rank
 	}
 };

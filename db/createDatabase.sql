@@ -4,32 +4,29 @@ create table People (
 	fullname varchar(50),
     email varchar(50),
     phone INT(50),
-    idea TEXT, 
+    interests TEXT,
+    techBackground TEXT,
+    bio TEXT,
+    words TEXT,
+    seriousness int
+);
+
+create table Matches(
+    pname int NOT NULL,
+    FOREIGN KEY (pname) REFERENCES
+    People(fullname),
+    match_name int NOT NULL,
+    FOREIGN KEY (match_name) REFERENCES
+    People(fullname)    
+    ON DELETE CASCADE,
+    rank int
     
-    /*interests*/
-    frontend BOOL,
-    backend BOOL,
-    machineLearn BOOL,
-    design BOOL, 
-    mobileApps BOOL,
-    games BOOL,
-    hardware BOOL,
-    analytics BOOL,
-    
-    
-    /*languages*/
-    python BOOL,
-    java BOOL,
-    javascript BOOL,
-    HTML_CSS BOOL,
-    C BOOL,
-    Cpp BOOL,
-    Csharp BOOL     
+    ON DELETE CASCADE
 );
 /*
 INSERT INTO People
-(fullname, email, phone, idea, frontend, backend, machineLearn, design, mobileApps, games, hardware, analytics, python, java, javascript, HTML_CSS, C, Cpp, Csharp)
+(fullname, email, phone, words)
 VALUES
-("Firstname Lastname", "myname@me.net", 7654321, "I want to make this awesome project", True, True, True, True, True, True, True, True, True, True, True, True, True, True, True);
+("Firstname Lastname", "myname@me.net", 7654321, "I want to make this awesome project and I know how to do lots of stuff");
 
 */
