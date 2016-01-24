@@ -97,7 +97,7 @@ exports.getPerson = function(dbConnection, email) {
 }
 
 // Adds a match between the 2 given people
-exports.addMatch = function(name, matchName, matchRank) {
+exports.addMatch = function(dbPool, name, matchName, matchRank, callback) {
   var sb = new StringBuilder();
 
   sb.append('INSERT INTO Matches VALUES (');
@@ -110,13 +110,26 @@ exports.addMatch = function(name, matchName, matchRank) {
 
   var toReturn = undefined;
 
-  insert.build(function(err, result) {
+  return insert.build(function(err, result) {
     if (err) throw err;
     // console.log("Query: " + result);
     console.log(dbConnection.threadId);
-    dbConnection.query(result, function (err, out) {
-      return out;
-    });
+    dbPool.query(result, callback));
+  }
+}
+
+exports.getMatches = function(dbPool, name, callback) {
+  var sb = new StringBuilder();
+
+  sb.append('SELECT * FROM Matches WHERE name = ');
+  sb.append(pname);
+  sb.append(';');
+
+  return insert.build(function(err, result) {
+    if (err) throw err;
+    // console.log("Query: " + result);
+    console.log(dbConnection.threadId);
+    return dbConnection.query(result, callback);
   });
 }
 
