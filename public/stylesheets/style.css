@@ -1,11 +1,11 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: url(/img/congruent_outline.png) repeat 0 0;
 }
 
 .form {
-	background-color: #82a4b3;
+	font-family:'Josefin Sans';
+	background-color: #BFD6E0;
 	border-radius: 25px;
 	border: 1px solid #000000;
 	width:800px;
@@ -13,46 +13,12 @@ body {
 	padding: 20px;
 }
 
-
-.button {
-	background-color: #E2E2E2;
-	border-radius: 25px;
-	border: 1px solid #000000;
-	margin-top: 10px;
-	padding: 20px;
-	height: 150px;
-	color:#9CA653;
-}
-
-
 h1 {
-	color: white;
-	font-size: 50px;
+	color: #9CA653;
+	font-family:'Josefin Slab';
+	font-size: 75px;
 }
 
-#indexheader {
-	color:#9CA653;
-}
-#ContactHeader {
-	background-color: #82a4b3;
-	color: white;
-	border-radius: 5px;
-}
-#BioHeader {
-	background-color: #7C87A6;
-	color: white;
-	border-radius: 5px;
-}
-#BackgroundHeader {
-	background-color: #BF6B21;
-	color: white;
-	border-radius: 5px;
-}
-#InterestsHeader {
-	background-color: #9CA653;
-	color: white;
-	border-radius: 5px;
-}
 
 a:link {
   color: #9CA653;
@@ -70,10 +36,13 @@ a:visited {
 }
 
 .indexbuttons {
+	font-family:'Josefin Sans';
+	font-size:25px;
 	width:250px;
 	height:150px;
 	margin-top:50px;
 	background-color:#FFFFFF;
+	color:#9CA653;
 }
 
 #registerbutton {
