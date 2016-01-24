@@ -5,7 +5,7 @@ var mysql = require('mysql');
 exports.getPersonAttribute = function(dbConnection, value, attribute, callback) {
   var sb = new StringBuilder();
 
-  sb.append('SELECT * FROM `people` WHERE `');
+  sb.append('SELECT * FROM `People` WHERE `');
   sb.append(attribute);
   sb.append('` = "');
   sb.append(value);
@@ -24,7 +24,7 @@ exports.getAttributeValues = function(dbConnection, attribute, callback) {
 
   sb.append('SELECT ');
   sb.append(attribute);
-  sb.append(' FROM people;');
+  sb.append(' FROM People;');
 
   var toReturn = undefined;
 
@@ -139,7 +139,7 @@ exports.defaultPool = function() {
     host: 'localhost',
          user: 'hack',
          password: fs.readFileSync('./db/pw.txt').toString().trim(),
-         database: 'hackateam'
+         database: 'HackATeam'
   });
 }
 
