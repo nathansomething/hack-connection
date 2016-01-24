@@ -2,29 +2,24 @@ var StringBuilder = require('stringbuilder');
 var fs = require('fs');
 var mysql = require('mysql');
 
-exports.getPersonAttribute = function(dbConnection, email, attribute) {
+exports.getPersonAttribute = function(dbConnection, value, attribute, callback) {
   var sb = new StringBuilder();
 
-  sb.append('SELECT ');
+  sb.append('SELECT * FROM `people` WHERE `');
   sb.append(attribute);
-  sb.append(' FROM people WHERE email = \'');
-  sb.append(email);
-  sb.append('\';');
+  sb.append('` = "');
+  sb.append(value);
+  sb.append('";');
 
   var toReturn = undefined;
 
-  sb.build(function(err, result) {
-    console.log("Query: " + result);
-    dbConnection.query(result, function(err, rows) {
-      toReturn = rows[0];
-      console.log(rows.sql);
-    });
+  return sb.build(function(err, result) {
+    // console.log("Query: " + result);
+    return dbConnection.query(result, callback);
   });
-
-  return toReturn;
 }
 
-exports.getAttributeValues = function(dbConnection, attribute) {
+exports.getAttributeValues = function(dbConnection, attribute, callback) {
   var sb = new StringBuilder();
 
   sb.append('SELECT ');
@@ -33,19 +28,14 @@ exports.getAttributeValues = function(dbConnection, attribute) {
 
   var toReturn = undefined;
 
-  sb.build(function(err, result) {
-    console.log("Query: " + result);
-    dbConnection.query(result, function(err, rows) {
-      toReturn = rows;
-      console.log(rows.sql);
-    });
+  return sb.build(function(err, result) {
+    // console.log("Query: " + result);
+    return dbConnection.query(result, callback);
   });
-
-  return toReturn;
 }
 
 // Adds a new person with the given attributes to the database
-exports.addPerson = function(dbConnection, fullname, email, phone, idea, interests, languages) {
+exports.addPerson = function(dbConnection, fullname, email, phone, idea, interests, languages, callback) {
   var insert = new StringBuilder();
   var values = new StringBuilder();
 
@@ -60,44 +50,42 @@ exports.addPerson = function(dbConnection, fullname, email, phone, idea, interes
       values.append(idea);
 
       for (var i in interests) {
-        console.log(i + ": " + interests[i]);
+        // console.log(i + ": " + interests[i]);
         appendTo(insert, values, interests[i]);
       }
 
-      for (var i in languages) {
-        console.log(i + ": " + languages[i]);
-        appendTo(insert, values, interests[i]);
+      for (var l in languages) {
+        // console.log(i + ": " + languages[l]);
+        appendTo(insert, values, languages[l]);
       }
 
       insert.append(')');
       values.append(');');
 
-      var insert_s = undefined;
-      var values_s = undefined;
+      var insert_s = "";
+      var values_s = "";
 
       insert.build(function(err, result) {
-        console.log("Insert: ", result);
+        // console.log("Insert: ", result);
           insert_s = result;
         });
 
       values.build(function(err, result) {
-        console.log("Values: ", result);
+        // console.log("Values: ", result);
           values_s = result;
         });
 
       var result = insert_s + values_s;
 
-      dbConnection.query(result, function(err, rows) {
-        return rows.sql;
-      });
+      return dbConnection.query(result, callback);
 }
 
-function appendTo(insert, values, i) {
+function appendTo(insert, values, item) {
   insert.append(', `');
-  insert.append(i);
+  insert.append(item);
   insert.append('`');
   values.append(', ');
-  values.append(i);
+  values.append(item);
 }
 
 exports.getPerson = function(dbConnection, email) {
@@ -124,20 +112,21 @@ exports.addMatch = function(name, matchName, matchRank) {
 
   insert.build(function(err, result) {
     if (err) throw err;
-    console.log("Query: " + result);
+    // console.log("Query: " + result);
+    console.log(dbConnection.threadId);
     dbConnection.query(result, function (err, out) {
       return out;
     });
   });
 }
 
-exports.defaultConnection = function() {
-  return mysql.createConnection({
+exports.defaultPool = function() {
+  return mysql.createPool({
+    connectionLimit: 10,
     host: 'localhost',
          user: 'hack',
-         protocol: 'TCP',
          password: fs.readFileSync('./db/pw.txt').toString().trim(),
-         database: 'HackATeam'
+         database: 'hackateam'
   });
 }
 
