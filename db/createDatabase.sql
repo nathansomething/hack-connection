@@ -12,10 +12,10 @@ create table People (
 );
 
 create table Matches(
-    pname int NOT NULL,
+    pname varchar(50) NOT NULL,
     FOREIGN KEY (pname) REFERENCES
     People(fullname),
-    match_name int NOT NULL,
+    match_name varchar(50) NOT NULL,
     FOREIGN KEY (match_name) REFERENCES
     People(fullname)    
     ON DELETE CASCADE,
