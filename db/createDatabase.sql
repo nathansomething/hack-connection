@@ -8,7 +8,7 @@ create table People (
     techBackground TEXT,
     bio TEXT,
     words TEXT,
-    seriousness int
+    competitiveness int
 );
 
 create table Matches(
@@ -20,13 +20,11 @@ create table Matches(
     People(fullname)    
     ON DELETE CASCADE,
     rank int
-    
-    ON DELETE CASCADE
 );
 /*
 INSERT INTO People
-(fullname, email, phone, words)
+(fullname, email, phone, interests, techBackground, bio, words, seriousness)
 VALUES
-("Firstname Lastname", "myname@me.net", 7654321, "I want to make this awesome project and I know how to do lots of stuff");
+("Firstname Lastname", "myname@me.net", 7654321, "I want to make this awesome project", "I know how to do lots of stuff", "I was born awesome and I'm still awesome", "{word stuff}", .4);
 
 */
