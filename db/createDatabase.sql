@@ -1,7 +1,6 @@
 use HackATeam;
 create table People (
-	--ID int NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-	fullname varchar(50),
+	fullname varchar(50) PRIMARY KEY,
     email varchar(50),
     phone INT(50),
     interests TEXT,
@@ -12,14 +11,15 @@ create table People (
 );
 
 create table Matches(
-    pname int NOT NULL,
+	match_rank int,
+    pname varchar (50) NOT NULL,
+    match_name varchar(50) NOT NULL,
     FOREIGN KEY (pname) REFERENCES
     People(fullname),
-    match_name int NOT NULL,
+    
     FOREIGN KEY (match_name) REFERENCES
     People(fullname)    
-    ON DELETE CASCADE,
-    match_rank int
+    ON DELETE CASCADE
 );
 /*
 INSERT INTO People

@@ -157,7 +157,7 @@ exports.defaultPool = function() {
     host: 'localhost',
          user: 'hack',
          password: fs.readFileSync('./db/pw.txt').toString().trim(),
-         database: 'HackATeam'
+         database: 'hackateam'
   });
 }
 
