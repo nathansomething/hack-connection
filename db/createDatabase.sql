@@ -19,7 +19,7 @@ create table Matches(
     FOREIGN KEY (match_name) REFERENCES
     People(fullname)    
     ON DELETE CASCADE,
-    rank int
+    match_rank int
 );
 /*
 INSERT INTO People
