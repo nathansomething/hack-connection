@@ -1,43 +1,30 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #31486A
+  background: url(/img/congruent_outline.png) repeat 0 0;
 }
 
 .form {
-	background-color: #FFFFFF;
+	font-family:'Josefin Sans';
+	background-color: #BFD6E0;
 	border-radius: 25px;
 	border: 1px solid #000000;
-	margin-top: 10px;
+	width:800px;
+	margin-top: 25px;
 	padding: 20px;
-}
-
-.button {
-	background-color: #FFFFFF;
-	border-radius: 25px;
-	border: 1px solid #000000;
-	margin-top: 10px;
-	padding: 20px;
-	height: 150px;
-}
-
-.form:hover {
-	background-color: #B2BDCF;
 }
 
 h1 {
-	color: #5FD8C9;
-	font-size: 50px;
+	color: #9CA653;
+	font-family:'Josefin Slab';
+	font-size: 75px;
 }
 
-a {
-  color: #00B7FF;
-}
 
-@media (min-width: 1200px) {
-    .container {
-        max-width:1000px;
-    }
+a:link {
+  color: #9CA653;
+}
+a:visited {
+  color:#BF6B21;
 }
 
 .rows {
@@ -45,6 +32,27 @@ a {
 }
 
 .form-control {
-	background-color: #96A0B0;
+	border: 1px solid #000000;
+}
+
+.indexbuttons {
+	font-family:'Josefin Sans';
+	font-size:25px;
+	width:250px;
+	height:150px;
+	margin-top:50px;
+	background-color:#FFFFFF;
+	color:#9CA653;
+}
+
+#registerbutton {
+	margin-right:10px;
+}
+#assignmentbutton {
+	margin-left:10px;
+}
+#submitbutton {
+	width:250px;
+	height:75px;
 	border: 1px solid #000000;
 }
