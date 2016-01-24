@@ -16,7 +16,7 @@ function match(personA, personB){
 	competitive_b = dbInterface.getPersonAttribute(connection, personB, 'competitiveness');
 	competitive_diff = Math.abs(competitive_a - competitive_b);
 	
-	if(competitive_diff > .65){
+	if(competitive_diff > 2){
 		match_rank = word_matches/(2*competitive_diff);
 	} else {
 		match_rank = word_matches/(compettitive_diff);

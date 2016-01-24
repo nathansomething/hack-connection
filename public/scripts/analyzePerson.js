@@ -1,4 +1,4 @@
-function analyze(var firstname, var lastname, var email, var phone, var interests, var techBackground, var bio, var words){
+function analyze(var firstname, var lastname, var email, var phone, var interests, var techBackground, var bio, var words, var comp){
 	var fullname = concat(firstname, lastname);
 	
 	//analyze words
@@ -12,6 +12,16 @@ function analyze(var firstname, var lastname, var email, var phone, var interest
 			}
 		}
 	};
+	
+	//determine competitiveness:
+	options = ["I'm just here to have fun!", "Working on the ferocity","The Middle Path", "Working on the chill", 
+		"I'm in it to win it."]
+	competitiveness = 0;
+	for(i=0; i<5; i++){
+		if(comp = options[i]){
+			competitiveness = i;
+		}
+	}
 	
 	var person = {name: fullname, email: email, phone: phone, interests:interests, techBackground:techBackground, bio:bio, words: words}
 	enterPerson(person);
