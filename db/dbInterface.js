@@ -96,6 +96,8 @@ function appendTo(insert, values, i) {
 // Adds a match between the 2 given people
 exports.addMatch = function(name, matchName, matchRank) {
   var sb = new StringBuilder();
+
+  sb.append('INSERT INTO Matches');
 }
 
 exports.defaultConnection = function() {
