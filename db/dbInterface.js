@@ -88,17 +88,30 @@ function appendTo(insert, values, item) {
   values.append(item);
 }
 
-exports.getPerson = function(dbConnection, email, callback) {
-  var person = {'email': email};
-
-  person['fullname'] = getPersonAttribute(dbConnection, email, 'fullname', function() {
-      person['phone'] = getPersonAttribute(dbConnection, email, 'phone', callback);
-    });
-  return person;
+exports.getPerson = function(dbPool, email, callback) {
+  return exports.getPersonAttribute(dbPool, email, 'email', function(err, rows) {
+    return {
+    'email': email,
+      'fullname': rows.fullname,
+      'phone': rows.phone
+    };
+  });
 }
 
-exports.getAllPeople = function (dbConnection) {
-  return getPerson(dbConnection, '*');
+exports.getAllPeople = function (dbPool, callback) {
+return exports.getAttributeValues(dbPool, 'email', function(err, rows) {
+    console.log("\nEMAILS");
+    console.error(err);
+    console.log(rows);
+    
+    return rows.map(function(currentValue, index, array) {
+      console.log(currentValue.email);
+      var result = exports.getPerson(dbPool, currentValue.email, function(err, result) {
+        console.log(result);
+        return result;
+      });
+    });
+  });
 }
 
 // Adds a match between the 2 given people

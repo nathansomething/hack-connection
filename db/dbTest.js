@@ -15,11 +15,18 @@ var emails = dbInterface.getAttributeValues(dbPool, 'email', function(err, rows)
   console.log(rows);
 });
 
-var bruce = dbInterface.getPersonAttribute(dbPool, 'bruce@notbatman.edu', 'email', function(err, rows, cells) {
+var bruceEmail = dbInterface.getPersonAttribute(dbPool, 'bruce@notbatman.edu', 'email', function(err, rows, cells) {
   console.log('\nBRUCE');
   console.error(err);
   console.log(rows);
 });
+
+var bruce = dbInterface.getPerson(dbPool, 'bruce@notbatman.edu', function(err, rows, cells) {
+  console.log('\nBRUCE');
+  console.error(err);
+  console.log(rows);
+});
+
 
 var deere = dbInterface.addPerson(dbPool, 'John Deere', 'weed@wha.ck', 7605555555, 'grass', {'frontend': true, 'backend': true, 'machineLearn': true}, {'java': true}, function(err, rows) {
   console.log('\nDEERE');
@@ -27,4 +34,8 @@ var deere = dbInterface.addPerson(dbPool, 'John Deere', 'weed@wha.ck', 760555555
   console.log(rows);
 });
 
-var people = dbInterface.getAllPeople(dbPool);
+var people = dbInterface.getAllPeople(dbPool, function(err, rows) {
+  console.log('\nPEOPLE');
+  console.error(err);
+  console.log(rows);
+});
