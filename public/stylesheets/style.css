@@ -5,24 +5,28 @@ body {
 
 .form {
 	font-family:'Josefin Sans';
-	background-color: #BFD6E0;
+	background-color: #255865;
 	border-radius: 25px;
-	border: 1px solid #000000;
+	border: 2px solid #505050;
 	width:800px;
 	margin-top: 25px;
 	padding: 20px;
 }
 
 h1 {
-	color: #9CA653;
+	color: #C8D662;
 	font-family:'Josefin Slab';
 	font-size: 75px;
 }
 
+h2 {
+	color:#EAEAEA;
+}
 
 a:link {
   color: #9CA653;
 }
+
 a:visited {
   color:#BF6B21;
 }
@@ -31,28 +35,58 @@ a:visited {
     font-size:small;
 }
 
-.form-control {
-	border: 1px solid #000000;
+.input-group {
+	margin:10px 0px;
+	border-radius:25px;
+}
+.input-group-addon {
+	min-width:110px;
+	text-align:left;
+	border-radius:5px;
+	border:1px solid #EEEEEE;
 }
 
+
+.form-control {
+	border: 1px solid #505050;
+	border-radius:5px;
+}
+
+.noborder {
+	border:0;
+}
 .indexbuttons {
 	font-family:'Josefin Sans';
 	font-size:25px;
-	width:250px;
-	height:150px;
-	margin-top:50px;
-	background-color:#FFFFFF;
-	color:#9CA653;
+	width:400px;
+	height:200px;
+	margin-top:100px;
+	background-color:#404040;
+	color:#EAEAEA;
+	outline:0;
+	border:1px solid #404040;
+	border-radius:8px;
+}
+.indexbuttons.btn:hover {
+	background-color:#255865;
+	color:#EAEAEA;
 }
 
 #registerbutton {
-	margin-right:10px;
+	margin-right:20px;
 }
 #assignmentbutton {
-	margin-left:10px;
+	margin-left:20px;
 }
-#submitbutton {
+.submitcancel {
+	font-family:'Josefin Sans';
+	font-size:18px;
 	width:250px;
-	height:75px;
-	border: 1px solid #000000;
+	height:60px;
+	margin:5px;
+	border: 1px solid #505050;
+	background-color:#404040;
+}
+.submitcancel.btn:hover {
+	color:#EAEAEA;
 }
