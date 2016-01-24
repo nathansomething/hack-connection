@@ -23,21 +23,19 @@
 
 <body>
   <link rel='stylesheet' href='stylesheets/style.css'>
-<div class="container">
-  <script src="app.js"></script>
+  <div class="container">
   {{#grouped_each 3 people}}
     <div class="row">
       {{#each this}}
-              <div class="col-md-3 col-md-offset-1 mycol">
-          <p>
-            Name: {{name}} <br/>
-            Email: {{email}} <br/>
-            Phone: {{phone}} <br/>
-        </p>
+      <div class="col-md-3 col-md-offset-1 match">
+      <p>
+        Name: {{name}} <br/>
+        Email: {{email}} <br/>
+        Phone: {{phone}} <br/>
+      </p>
       </div>
       {{/each}}
     </div>
 {{/grouped_each}}
 </div>
 <body/>
-<hr/>

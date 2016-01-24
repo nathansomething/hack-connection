@@ -24,6 +24,11 @@ body {
 	color:#9CA653;
 }
 
+.match {
+	width: 200px;
+	background-color: #FFFFFF;
+	color: #000000;
+}
 
 h1 {
 	color: white;
