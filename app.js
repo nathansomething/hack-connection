@@ -8,15 +8,20 @@ var DocumentParameters = require("rosette-api").DocumentParameters;
 var rosetteConstants = require("rosette-api").rosetteConstants;
 var app = express();
 var exphandle = require('express-handlebars');
-
-var person1 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324", bio: "I like pie. I'm a political science major at Northeastern with an interest in coding. I'm generally a pretty easy going person, just don't piss me off.", tech_background: "I write code", goals: "I want to win"};
+var dbInterface = require('./db/dbInterface');
+var pool = dbInterface.defaultPool();
+/*var person1 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324", bio: "I like pie. I'm a political science major at Northeastern with an interest in coding. I'm generally a pretty easy going person, just don't piss me off.", tech_background: "I write code", goals: "I want to win"};
 var person2 =  {name:"Angela", email:"angela@hotmail.com", phone:"1245324", bio: "I like apples", tech_background: "I write code", goals: "I want to win"};
 var person3 = {name:"Nathan", email:"nate@hotmail.com", phone:"1234534", bio: "I like grapes", tech_background: "I write code", goals: "I want to loose"};
 var person4 = {name:"Emily", email:"hi@hotmail.com", phone:"12345324", bio: "I like peanuts", tech_background: "I write code", goals: "I want to win"};
 var person5 = {name:"Emily", email:"hi@hotmail.com", phone:"45324", bio: "I like trees", tech_background: "I write code", goals: "I want to win"};
 var person6 = {name:"Emily", email:"hi@hotmail.com", phone:"12324", bio: "I like the sky", tech_background: "I write code", goals: "I want to loose"};
 
-var people = [person1, person2, person3, person4, person5, person6];
+var people = [person1, person2, person3, person4, person5, person6];*/
+
+var people = dbInterface.getAllPeople(pool, function(err, rows) {
+  return rows;
+});
 
 var exphelpers = exphandle.create({
 	helpers: {

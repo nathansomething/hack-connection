@@ -1,8 +1,10 @@
 function match(personA, personB){
 	is_match = false;
 	word_matches = 0;
-	words_a = dbInterface.getPersonAttribute(connection, personA, 'words')
-	words_b = dbInterface.getPersonAttribute(connection, personB, 'words')
+	var dbInterface = require('db/dbInterface');
+	var pool = dbInterface.defaultPool();
+	words_a = dbInterface.getPersonAttribute(pool, personA, 'words')
+	words_b = dbInterface.getPersonAttribute(pool, personB, 'words')
 
 	for(i = 0; i < words_a.length; i++){
 		for(j = 0; j < words_b.length; j++){
@@ -12,8 +14,8 @@ function match(personA, personB){
 		}
 	}
 
-	competitive_a = dbInterface.getPersonAttribute(connection, personA, 'competitiveness');
-	competitive_b = dbInterface.getPersonAttribute(connection, personB, 'competitiveness');
+	competitive_a = dbInterface.getPersonAttribute(pool, personA, 'competitiveness');
+	competitive_b = dbInterface.getPersonAttribute(pool, personB, 'competitiveness');
 	competitive_diff = Math.abs(competitive_a - competitive_b);
 	
 	if(competitive_diff > 2){

@@ -1,6 +1,7 @@
 function analyze(var firstname, var lastname, var email, var phone, var interests, var techBackground, var bio, var words, var comp){
 	var fullname = concat(firstname, lastname);
-	
+	var dbInterface = require('db/dbInterface');
+	var pool = dbInterface.defaultPool();
 	//analyze words
 	new_words = [];
 	// do not add duplicates and irrelevant parts of speech
@@ -28,7 +29,9 @@ function analyze(var firstname, var lastname, var email, var phone, var interest
 	matches = [];
 
 	//match the person with other people
-	people = dbInterface.getPersonAttribute(connection, 'fullname');
+	var people =dbInterface.getAllPeople(pool, function(err, rows) {
+		return rows;
+	});
 	for(i=0; i<people.length; people++){
 		other_person = people[i];
 		match_rank = match(person, other_person);
