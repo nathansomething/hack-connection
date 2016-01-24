@@ -6,7 +6,9 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "argparse": "^1.0.4",
     "express": "3.2.6",
-    "jshtml": "*"
+    "jshtml": "*",
+    "rosette-api": "^0.7.6"
   }
 }
