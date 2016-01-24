@@ -95,6 +95,9 @@ exports.getAllPeople = function (dbPool, callback) {
     console.error(err);
     console.log(rows);
 
+    if (err) {
+      callback(null, {});
+    } else {
     callback(null, rows.map(function(currentValue, index, array) {
       console.log(currentValue.email);
       var result = exports.getPerson(dbPool, currentValue.email, function(err, result) {
@@ -102,6 +105,7 @@ exports.getAllPeople = function (dbPool, callback) {
         return result;
       });
     }));
+    }
   });
 
 }
