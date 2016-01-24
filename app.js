@@ -79,29 +79,31 @@ app.post('/', function (request, result) {
 	var sentiment_data = {};
 	var morpho_data = {};
 
+	console.log(all_text);
+
 	var morphofunc = function() {
 		basis_api.morphology(all_text, rosetteConstants.morpholoyOutput.PARTS_OF_SPEECH, function(error, res) {
-				if (error) {
-					throw error;
-				}
-				else {
-					morpho_data = res;
-					console.log(morpho_data);
-				}
-			});
-		};
+			if (error) {
+				result.redirect('/register');
+			}
+			else {
+				morpho_data = res;
+				console.log(morpho_data);
+			}
+		});
+	};
 
 	basis_api.sentiment(all_text, function(error, res) {
 		if (error) {
-			throw error;
+			result.redirect('/register');
 		}
 		else {
 			sentiment_data = res;
 			console.log(sentiment_data);
 			morphofunc();
-
 		}
 	});
+
 	result.redirect('/');
 });
 
