@@ -13,9 +13,11 @@
 
 <script src="scripts/bootstrap-formhelpers-phone.en_US.js"></script>
 <script src="scripts/bootstrap-formhelpers-phone.js"></script>
+<script src="/scripts/ion.rangeSlider.js"></script>
 <script src="scripts/main.js"></script>
 
-<link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="stylesheets/style.css">
 
@@ -24,7 +26,19 @@
 <body>
   <link rel='stylesheet' href='stylesheets/style.css'>
   <form method="post" action="/login">
-    <div class="container form">
+
+<div class="container form">
+  <div class="input-group">
+                <span class="input-group-addon">Email</span>
+                <input type="text" name="user[email]" id="loginemail" class="noborder form-control" placeholder="Jerry@seinfeld.com" aria-describedby="basic-addon1">
+</div>
+<div class="input-group">
+                <span class="input-group-addon">Password</span>
+                <input type="text" name="user[password]" id="loginpassword" class="noborder form-control" placeholder="xxxxxxx" aria-describedby="basic-addon1">
+</div>
+</div>
+
+    <!-- <div class="container form">
         <fieldset class="form-group">
             <label for="InputName">Email</label>
             <input type="name" name="user[email]" class="form-control" id="InputName" placeholder="First Name">
@@ -32,10 +46,11 @@
         <fieldset class="form-group">
             <label for="InputName">Password</label>
             <input type="password" name="user[password]" class="form-control" id="InputName" placeholder="Last Name">
-        </fieldset>
-        <button>Login</button>
-        <button>Cancel</button>
-    </div>
+        </fieldset> -->
+       <div class="container text-center">
+                    <button id="loginbutton" type="submit" class="btn submitcancel">Login</button>
+                    <a href="index"><button type="button" class="btn submitcancel" id="cancelbutton">Cancel</button></a>
+        </div>
   </form>
 </div>
 <body/>
