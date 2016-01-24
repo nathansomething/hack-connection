@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>@write(title)</title>
+   <title>{{title}}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -67,15 +67,15 @@
 
        <div class="container form" id="bio">
             <h2 class="text-center" id="BioHeader">Tell us about yourself!</h2>
-            <textarea class="form-control" rows="3" placeholder="Where do you go to school? What year are you? Career goals? Where are you from? Tell us anything you'd want new friends to know about you!"></textarea>
+            <textarea class="form-control" name="user[bio]" rows="3" placeholder="Where do you go to school? What year are you? Career goals? Where are you from? Tell us anything you'd want new friends to know about you!"></textarea>
         </div>
         <div class="container form" id="technical-background">
             <h2 class="text-center" id="BackgroundHeader">Describe your technical background</h2>
-            <textarea class="form-control" rows="3" placeholder="What are you most proud of? What languages, platforms, operating systems are you comfortable with? Do you have any seemingly unrelated technical skill (i.e. can analyze stellar spectra)?"></textarea>
+            <textarea class="form-control" name="user[tech_background]" rows="3" placeholder="What are you most proud of? What languages, platforms, operating systems are you comfortable with? Do you have any seemingly unrelated technical skill (i.e. can analyze stellar spectra)?"></textarea>
         </div>
         <div class="container form" id="interests">
             <h2 class="text-center" id="InterestsHeader">What are you hoping to work on?</h2>
-            <textarea class="form-control" rows="3" placeholder="What technologies would you like to work with? Do you want to do front-end? Big Data? Let us know!"></textarea>
+            <textarea class="form-control" rows="3" placeholder="What technologies would you like to work with? Do you want to do front-end? Big Data? Let us know!" name="user[project]"></textarea>
         </div>
         <div class="container form">
             <h2 class="text-center" id="CompetitiveHeader">Ok, so how competitive are you?</h2>
